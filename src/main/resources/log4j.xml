@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Appender name="GELF" class="biz.paluch.logging.gelf.log4j.GelfLogAppender">
+            <param name="Threshold" value="INFO" />
+            <param name="Host" value="${props:logger.logstash.server}" />
+            <param name="Port" value="${props:logger.logstash.port}" />
+            <param name="TimestampPattern" value="yyyy-MM-dd HH:mm:ss,SSSS" />
+            <param name="AdditionalFields" value="application=Validator" />
+        </Appender>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="GELF"/>
+        </Root>
+    </Loggers>
+</Configuration>
